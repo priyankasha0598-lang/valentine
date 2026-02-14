@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Rishabh 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #ff4e88, #8b004f, #ff758c, #ff7eb3);
+    background-size: 400% 400%;
+    animation: gradientBG 12s ease infinite;
+}
+
+/* Animated Gradient Background */
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Center Container */
+.page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glass Card */
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    padding: 40px 30px;
+    border-radius: 25px;
+    text-align: center;
+    color: white;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 0 40px rgba(255,255,255,0.3);
+    animation: fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 18px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    margin: 15px;
+    transition: 0.3s;
+}
+
+#yesBtn {
+    background: linear-gradient(45deg, #ff0055, #ff4e88);
+    color: white;
+    box-shadow: 0 0 20px #ff4e88;
+}
+
+#yesBtn:hover {
+    transform: scale(1.1);
+}
+
+#noBtn {
+    background: white;
+    color: #ff0055;
+    position: absolute;
+}
+
+.loveText {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+/* Rose Petals */
+.petal {
+    position: fixed;
+    top: -10px;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Fireworks */
+.particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(0.5) translate(var(--x), var(--y)); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page" id="mainPage">
+    <div class="card">
+        <h1>RISHABH 💖<br>Will You Be My Valentine? 💘</h1>
+        <button id="yesBtn" onclick="showLove()">YES 💕</button>
+        <button id="noBtn" onmouseover="moveNo()">NO ❌</button>
+    </div>
+</div>
+
+<div class="page" id="lovePage" style="display:none;">
+    <div class="card">
+        <h1>My Dearest Rishabh 💖</h1>
+        <div class="loveText">
+            You are the most beautiful chapter of my life.  
+            With you, even ordinary moments feel magical. ✨  
+
+            Your smile is my favorite sight.  
+            Your voice is my comfort.  
+            Your love is my home. 🏡❤️  
+
+            I didn’t just choose you today —  
+            I choose you every single day.  
+
+            Happy Valentine’s Day, my love. 💘  
+            Forever yours. 💎
+        </div>
+    </div>
+</div>
+
+<script>
+
+function moveNo() {
+    const btn = document.getElementById("noBtn");
+    btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+}
+
+function showLove() {
+    document.getElementById("mainPage").style.display = "none";
+    document.getElementById("lovePage").style.display = "flex";
+    startPetals();
+    launchFireworks();
+}
+
+/* Rose petals */
+function startPetals() {
+    setInterval(() => {
+        const petal = document.createElement("div");
+        petal.className = "petal";
+        petal.innerHTML = "🌹";
+        petal.style.left = Math.random() * window.innerWidth + "px";
+        petal.style.animationDuration = (Math.random() * 5 + 5) + "s";
+        document.body.appendChild(petal);
+        setTimeout(() => petal.remove(), 10000);
+    }, 400);
+}
+
+/* Fireworks */
+function launchFireworks() {
+    for (let i = 0; i < 120; i++) {
+        let particle = document.createElement("div");
+        particle.className = "particle";
+        particle.style.background = `hsl(${Math.random()*360},100%,60%)`;
+
+        let x = (Math.random() - 0.5) * 400 + "px";
+        let y = (Math.random() - 0.5) * 400 + "px";
+
+        particle.style.setProperty('--x', x);
+        particle.style.setProperty('--y', y);
+
+        particle.style.left = window.innerWidth/2 + "px";
+        particle.style.top = window.innerHeight/2 + "px";
+
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1000);
+    }
+}
+
+</script>
+
+</body>
+</html>
+
+
+
